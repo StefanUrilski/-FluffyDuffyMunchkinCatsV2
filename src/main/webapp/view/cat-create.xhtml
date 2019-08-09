@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="templates/base-layout.xhtml">
+    <ui:define name="main-content">
+        <div class="jumbotron justify-content-center jumbotron-background">
+            <div class="row">
+                <div class="col col-md-12 d-flex justify-content-center">
+                    <h1>Create Cat!</h1>
+                </div>
+            </div>
+            <hr class="hr-background"/>
+            <h:form id="j_id_p" name="j_id_p" method="post" action="/jsf/cat-create.xhtml"
+                  enctype="application/x-www-form-urlencoded">
+                <div class="row">
+                    <div class="col-md-12  d-flex justify-content-center">
+                        <div class="form-group">
+                            <h:outputLabel for="Name" value="Name"/>
+                            <h:inputText value="#{createForm.createCat.name}" id="Name" label="Cat Name"
+                                         class="form-control" required="true">
+                                <f:validateLength minimum="2" maximum="10"/>
+                            </h:inputText>
+                        </div>
+                    </div>
+                    <h:message class="col-md-12  d-flex justify-content-center" for="Name" style="color:red; "/>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 d-flex justify-content-center">
+                        <div class="form-group">
+                            <h:outputLabel for="j_id_p_catBreedInput" value="Breed"/>
+                            <h:inputText value="#{createForm.createCat.breed}" id="j_id_p_catBreedInput" label="Breed"
+                                         name="j_id_p_catBreedInput" class="form-control" required="true">
+                            <f:validateLength minimum="5" maximum="20"/>
+                            </h:inputText>
+                        </div>
+                    </div>
+                    <h:message class="col-md-12  d-flex justify-content-center" for="j_id_p_catBreedInput" style="color:red; "/>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 d-flex justify-content-center">
+                        <div class="form-group">
+                            <h:outputLabel for="j_id_p_catColorInput" value="Color"/>
+                            <h:inputText value="#{createForm.createCat.color}" id="j_id_p_catColorInput"
+                                         name="j_id_p_catColorInput" class="form-control"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 d-flex justify-content-center">
+                        <div class="form-group">
+                            <h:outputLabel for="j_id_p_catAgeInput" value="Age"/>
+                            <h:inputText value="#{createForm.createCat.age}" id="j_id_p_catAgeInput" label="Cat Age"
+                                         name="j_id_p_catAgeInput" class="form-control" required="true">
+                            <f:validateLongRange minimum="1" maximum="31"/>
+                            </h:inputText>
+                        </div>
+                    </div>
+                    <h:message class="col-md-12  d-flex justify-content-center" for="j_id_p_catAgeInput" style="color:red"/>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 d-flex justify-content-center">
+                        <div class="form-group">
+                            <h:outputLabel for="j_id_p_catPriceInput" value="Price"/>
+                            <h:inputText value="#{createForm.createCat.price}" id="j_id_p_catPriceInput" label="Cat Price"
+                                         name="j_id_p_catPriceInput" class="form-control" required="true">
+                            <f:validateDoubleRange minimum="0.01" for="j_id_p_catPriceInput"/>
+                            </h:inputText>
+                        </div>
+                    </div>
+                    <h:message class="col-md-12  d-flex justify-content-center" for="j_id_p_catPriceInput" style="color:red"/>
+                </div>
+                <hr class="hr-background"/>
+                <div class="row">
+                    <div class="col-md-12 d-flex justify-content-center">
+                        <h:outputLabel class="mr-4" for="j_id_p_catGenderRadio" value="Gender"/>
+                        <h:selectOneRadio value="#{createForm.createCat.gender}" id="j_id_p_catGenderRadio">
+                            <f:selectItem itemValue="male" itemLabel="male"/>
+                            <f:selectItem itemValue="female" itemLabel="female" />
+                        </h:selectOneRadio>
+<!--                        <h:dataTable id="j_id_p_catGenderRadio">-->
+<!--                            <tr>-->
+<!--                                <td>-->
+<!--                                    <input id="j_id_p_catGenderRadio:0" type="radio" name="j_id_p_catGenderRadio"-->
+<!--                                           value="male "/>-->
+<!--                                    <label for="j_id_p_catGenderRadio:0"> Male</label>-->
+<!--                                </td>-->
+<!--                                <td>-->
+<!--                                    <input id="j_id_p_catGenderRadio:1" type="radio" name="j_id_p_catGenderRadio"-->
+<!--                                           value="female"/>-->
+<!--                                    <label for="j_id_p_catGenderRadio:1"> Female</label>-->
+<!--                                </td>-->
+<!--                            </tr>-->
+<!--                        </h:dataTable>                      -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 d-flex justify-content-center">
+                        <div class="form-check">
+                            <h:selectBooleanCheckbox id="j_id_p_catPassportCheckbox" name="j_id_p_catPassportCheckbox"
+                            value="#{createForm.createCat.hasPassport}" class="form-check-input"/>
+                            <h:outputLabel class="form-check-label mr-4" for="j_id_p_catPassportCheckbox" value="Has passport"/>
+                        </div>
+                    </div>
+                </div>
+                <hr class="hr-background"/>
+                <div class="row">
+                    <div class="col-md-12 d-flex justify-content-center">
+                        <div class="form-group">
+                            <h:outputLabel for="j_id_p_catAddedOnInput" value="Added On:"/>
+                            <br/>
+                            <p:calendar id="j_id_p_catAddedOnInput" value="#{createForm.createCat.addedOn}"
+                                        pattern="dd-MMM-yyyy" mode="popup"/>
+                        </div>
+                    </div>
+                </div>
+                <hr class="hr-background"/>
+                <div class="row">
+                    <div class="col-md-12 d-flex justify-content-center">
+                        <h:commandButton action="#{createForm.registerCat}" value="Create cat" type="submit" class="btn btn-success"/>
+                    </div>
+                </div>
+                <h:inputHidden name="j_id_p_SUBMIT" value="1"/>
+                <h:inputHidden name="javax.faces.ViewState"
+                       value="QUZFNzkwODE2RkY4RURCOTAwMDAwMDAx" autocomplete="off"/>
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
+
+</html>
